@@ -1,14 +1,21 @@
 FROM python:3.6-alpine3.6
 
-RUN apk update
-RUN apk add --no-cache --virtual .build-deps \
-    gcc libc-dev openblas-dev
 
+RUN echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN apk --update add --no-cache --virtual .build-deps  \
+    lapack-dev \
+    gcc \
+    gfortran \
+    musl-dev \
+    g++
 
 COPY analytics /src/analytics
 
 WORKDIR /src/analytics
-RUN pip install -r requirements.txt
+RUN pip install pipenv
+RUN pipenv install --deploy --system
 
 WORKDIR /src/
+RUN apk del .build-deps
+
 CMD python analytics
