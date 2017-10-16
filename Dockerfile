@@ -9,13 +9,18 @@ RUN apk --update add --no-cache --virtual .build-deps  \
     musl-dev \
     g++
 
-COPY analytics /src/analytics
+COPY analytics/Pipfile /src/analytics/
+COPY analytics/Pipfile.lock /src/analytics/
 
 WORKDIR /src/analytics
 RUN pip install pipenv
 RUN pipenv install --deploy --system
 
+COPY analytics /src/analytics
+
 WORKDIR /src/
 RUN apk del .build-deps
+
+COPY analytics /src/
 
 CMD python analytics
