@@ -8,8 +8,7 @@ RUN apk add --no-cache --virtual .build-deps \
 COPY analytics /src/analytics
 
 WORKDIR /src/analytics
-RUN pip install pipenv
-RUN pipenv install  --system --deploy
+RUN pip install -r requirements.txt
 
 WORKDIR /src/
 CMD python analytics
