@@ -13,8 +13,8 @@ requests = "*"
 statsmodels = "*"
 uuid = "*"
 "paho-mqtt" = "*"
-numpy = "1.13.1"
 cython = "*"
+numpy = "*"
 
 
 
