@@ -1,15 +1,15 @@
-FROM python:3.7.0a1-alpine3.6
+FROM python:3.6-alpine3.6
 
 RUN apk update
 RUN apk add --no-cache --virtual .build-deps \
-    gcc libc-dev openblas-dev lapack-dev
+    gcc libc-dev openblas-dev
 
 
 COPY analytics /src/analytics
 
 WORKDIR /src/analytics
-
-RUN pip install -r requirements.txt
+RUN pip install pipenv
+RUN pipenv install  --system --deploy
 
 WORKDIR /src/
 CMD python analytics
