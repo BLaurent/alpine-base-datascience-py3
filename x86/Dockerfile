@@ -1,7 +1,8 @@
 FROM python:3.7-alpine3.10
 
+RUN apk update --no-cache && \
+      apk upgrade --no-cache
 
-RUN echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 RUN apk --update add --no-cache --virtual .build-deps  \
     lapack-dev \
     gcc \
