@@ -3,7 +3,7 @@ SET(DEVSHELL_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 SET(DEVSHELL_TAG "blaurent/edge-python")
 SET(DEVSHELL_CONTAINER_NAME edge-python)
 SET(TAG_RELEASE "blaurent/edge-python")
-SET(build-args --build-arg 'http_proxy=$ENV{http_proxy}' --build-arg 'https_proxy=$ENV{https_proxy}' --build-arg 'no_proxy=$ENV{no_proxy}' --build-arg 'ARTIFACTORY_CREDS_USR=$ENV{ARTIFACTORY_CREDS_USR}' --build-arg 'ARTIFACTORY_CREDS_PSW=$ENV{ARTIFACTORY_CREDS_PSW}' --build-arg ARTIFACTORY_REPOSITORY="IEWMS-SNAPSHOT" )
+SET(build-args --build-arg 'http_proxy=$ENV{http_proxy}' --build-arg 'https_proxy=$ENV{https_proxy}' --build-arg 'no_proxy=$ENV{no_proxy}' )
 
 
 add_custom_target(build_arm
